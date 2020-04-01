@@ -12,7 +12,7 @@ Redistribution and use in source and binary forms, with or without modification,
 
 package com.ds.avare.place;
 
-import java.util.LinkedHashMap;
+import java.util.Map;
 
 import com.ds.avare.content.LocationContentProviderHelper;
 import com.ds.avare.position.Projection;
@@ -39,16 +39,13 @@ public class Airport {
     private double mHeight;
    
     /**
-     * 
-     * @param id
-     * @param lon
-     * @param lat
+     *
      * @param cLon
      * @param cLat
      */
-    public Airport(LinkedHashMap<String, String> params, double cLon, double cLat) {
+    public Airport(Map<String, String> params, double cLon, double cLat) {
         mLon = Double.parseDouble(params.get(LocationContentProviderHelper.LONGITUDE));
-        mLat = Double.parseDouble(params.get(LocationContentProviderHelper.LATITUDE));;
+        mLat = Double.parseDouble(params.get(LocationContentProviderHelper.LATITUDE));
         mId = params.get(LocationContentProviderHelper.LOCATION_ID);
         mName = params.get(LocationContentProviderHelper.FACILITY_NAME);
         mFuel = params.get(LocationContentProviderHelper.FUEL_TYPES);
@@ -161,14 +158,11 @@ public class Airport {
          * Height * glide ratio (distance feet / height feet) = distance
          */
         double radius = mHeight * mPref.getGlideRatio() / Preferences.feetConversion;
-        if(radius > getDistance()) {
-            /*
-             * This is in glide distance
-             */
-            return true;
-        }
-        
-        return false;
+
+        /*
+         * This is in glide distance
+         */
+        return radius > getDistance();
     }
 
 }

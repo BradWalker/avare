@@ -16,7 +16,6 @@ package com.ds.avare.place;
 import android.location.Location;
 
 import com.ds.avare.StorageService;
-import com.ds.avare.content.ContentProviderHelper;
 import com.ds.avare.content.LocationContentProviderHelper;
 import com.ds.avare.gps.GpsParams;
 import com.ds.avare.position.Projection;
@@ -211,7 +210,7 @@ public class Destination extends Observable {
             double ws = 0;
             double wd = 0;
             if(mWinds != null) {
-                double winds[] = mWinds.getWindAtAltitude(params.getAltitude());
+                double[] winds = mWinds.getWindAtAltitude(params.getAltitude());
                 ws = winds[0];
                 wd = winds[1];
                 mWindString = String.format(Locale.getDefault(),
@@ -491,9 +490,8 @@ public class Destination extends Observable {
 	public String getVerticalSpeedTo(GpsParams params) {
 	    long vs = Math.min(getVerticalSpeedToNoFmt(params), 9999);
 	    vs = Math.max(vs, -9999);
-	    String retVS = String.format(Locale.getDefault(), "%+05d", vs);
 
-	    return retVS;
+        return String.format(Locale.getDefault(), "%+05d", vs);
 	}
 	
 	/**

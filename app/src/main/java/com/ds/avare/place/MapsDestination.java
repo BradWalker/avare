@@ -30,7 +30,7 @@ public class MapsDestination extends Destination {
          * then no need to do again because internet may not be available on flight.
          * It could be coming from storage and not google maps.
          */
-        double coords[] = {0, 0}; // lon, lat
+        double[] coords = {0, 0}; // lon, lat
         if(null != Helper.decodeGpsAddress(mName, coords)) {
             mName = name;
             mLond = coords[0];

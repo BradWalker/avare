@@ -12,16 +12,10 @@ Redistribution and use in source and binary forms, with or without modification,
 package com.ds.avare.place;
 
 import android.graphics.Color;
-import android.graphics.Paint;
 
-import com.ds.avare.gps.GpsParams;
 import com.ds.avare.shapes.DrawingContext;
 import com.ds.avare.storage.StringPreference;
-import com.ds.avare.utils.BitmapHolder;
-import com.ds.avare.utils.Helper;
 import com.ds.avare.utils.ShadowedText;
-
-import java.util.LinkedList;
 
 /**
  * 
@@ -31,14 +25,14 @@ import java.util.LinkedList;
 public class Favorites {
 
     public static void draw(DrawingContext ctx, boolean shouldShow) {
-        String vals[] = ctx.pref.getRecent();
+        String[] vals = ctx.pref.getRecent();
         if((vals == null) || (!shouldShow)) {
             return;
         }
         for (String s : vals) {
             String destType = StringPreference.parseHashedNameDestType(s);
             String dbType = StringPreference.parseHashedNameDbType(s);
-            String id = "";
+            String id;
             double lon = 0;
             double lat = 0;
             if(dbType == null || destType == null) {
@@ -55,7 +49,7 @@ public class Favorites {
                 /*
                  * This is lon/lat destination
                  */
-                String tokens[] = after.split("&");
+                String[] tokens = after.split("&");
 
                 try {
                     lon = Double.parseDouble(tokens[1]);

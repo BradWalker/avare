@@ -497,7 +497,7 @@ public class Plan implements Observer {
             int segments = (int) p.getDistance() / MILES_PER_SEGMENT + 3; // Min
                                                                             // 3
                                                                             // points
-            Coordinate coord[] = p.findPoints(segments);
+            Coordinate[] coord = p.findPoints(segments);
 
             coord[0].makeSeparate();
             Coordinate.setLeg(coord, id - 1);
@@ -570,7 +570,8 @@ public class Plan implements Observer {
     public void replaceDestination(Preferences pref, int id, double lon,
             double lat, boolean finish) {
         boolean active = mActive;
-        String airport = null;
+        String airport;
+
         if (finish) {
             airport = mService.getDBResource().findClosestAirportID(lon, lat);
 
@@ -764,8 +765,7 @@ public class Plan implements Observer {
             double timerem = (mCurrentDistance / mSpeed) * 3600;
             if (timerem < (mPref.getEarlyPassTimer())) {
                 if (!mEarlyPass) {
-                    mEarlyPass = false;
-                    if (true == mPref.getPlanPassage()) {
+                    if (mPref.getPlanPassage()) {
                         mEarlyPassEvent = true;
                         return true;
                     } else {
@@ -1005,7 +1005,7 @@ public class Plan implements Observer {
             ExternalPlanMgr epm = service.getExternalPlanMgr();
             ArrayList<String> planNames = epm.getPlanNames(null);
             for (String planName : planNames) {
-                if (true == localMap.containsKey(planName)) {
+                if (localMap.containsKey(planName)) {
                     localMap.remove(planName);
                 }
             }

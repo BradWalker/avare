@@ -69,7 +69,7 @@ public class Airway extends Observable {
 		
 		String match = "[A-Z]\\d+";
 		
-		LinkedList<String> ret = new LinkedList<String>();
+		LinkedList<String> ret = new LinkedList<>();
 		
 		if(!name.matches(match)) {
 			// Not an airway

@@ -19,6 +19,7 @@ import com.ds.avare.utils.BitmapHolder;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Map;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -28,7 +29,7 @@ import java.util.Iterator;
  */
 public class Boundaries {
 
-    private HashMap<String, Shape> mPolygons;
+    private Map<String, Shape> mPolygons;
     private static Boundaries mInstance = null;
 
     private Boundaries() {

@@ -426,7 +426,7 @@ public class Runway {
                 ctx.service.getShadowedText().draw(ctx.canvas, ctx.runwayPaint, num, Color.DKGRAY,
                         runwayNumberCoordinatesX, runwayNumberCoordinatesY);
 
-                if (true == bRotated) {
+                if (bRotated) {
                     ctx.canvas.restore();
                 }
             }

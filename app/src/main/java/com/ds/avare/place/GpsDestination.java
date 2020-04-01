@@ -20,7 +20,7 @@ public class GpsDestination extends Destination {
         mDbType = GPS;
         mDestType = GPS;
 
-        double coords[] = {0, 0}; // lon, lat
+        double[] coords = {0, 0}; // lon, lat
         if(null == Helper.decodeGpsAddress(name, coords)) {
             mName = "";
             mDestType = "";

@@ -24,7 +24,7 @@ public class DatabaseDestination extends Destination {
     private LinkedList<Runway> mRunways;
     private LinkedHashMap<String, String> mFreq;
     private LinkedList<Awos> mAwos;
-    private String mAfdFound[];
+    private String[] mAfdFound;
 
     /**
      * Cache it for database query from async task
@@ -135,17 +135,18 @@ public class DatabaseDestination extends Destination {
                             return match;
                         }
                     };
-                    String afd[] = null;
+
+                    String[] afd;
                     afd = new File(mPref.mapsFolder() + "/afd/").list(filter);
                     if(null != afd) {
                         java.util.Arrays.sort(afd);
                         int len1 = afd.length;
-                        String tmp1[] = new String[len1];
+                        String[] tmp1 = new String[len1];
                         for(int count = 0; count < len1; count++) {
                             /*
                              * Add Chart Supplement
                              */
-                            String tokens[] = afd[count].split(Preferences.IMAGE_EXTENSION);
+                            String[] tokens = afd[count].split(Preferences.IMAGE_EXTENSION);
                             tmp1[count] = mPref.mapsFolder() + "/afd/" +
                                     tokens[0];
                         }
